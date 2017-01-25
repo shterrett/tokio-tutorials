@@ -6,3 +6,4 @@ authors = ["stuart"]
 [dependencies]
 futures = "0.1"
 futures-cpupool = "0.1"
+tokio-timer = { git = "https://github.com/tokio-rs/tokio-timer" }
