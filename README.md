@@ -18,3 +18,11 @@ https://tokio.rs/docs/getting-started/tokio/
 + Each connection processed by separate thread in thread pool.
 + Processing done in a future - allows requests to be processed concurrently;
   returns when future is evaluated.
+
+## Streams
+
++ Provide in-order, infinite stream processing using futures
++ Can create a `core.handle` and spwan a lightweight thread for each stream
+  element. This makes work asynchronous.
++ Async, lightweight threads using `core.handle` good for io-intensive work
++ Prefer a thread pool for cpu intensive work
