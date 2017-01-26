@@ -11,3 +11,10 @@ https://tokio.rs/docs/getting-started/tokio/
 + `Proto` holds the specific `Codec`
 + `Server` is initialized with a `Proto`
 + `Server` then serves the `Service`
+
+
+## db/futures
+
++ Each connection processed by separate thread in thread pool.
++ Processing done in a future - allows requests to be processed concurrently;
+  returns when future is evaluated.
