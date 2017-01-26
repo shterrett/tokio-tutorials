@@ -39,3 +39,22 @@ https://tokio.rs/docs/getting-started/tokio/
   `Send`)
 + `Remote` is `Send`. `spawn`s a *closure* that creates a future (and is `Send`)
 + `Remote::spawn`'s closure can be executed on a different thread
+
+## High-level IO
+
++ TCP/UDP - only async IO available across all rust platforms
++ Tokio `TcpListener`, `TcpStream`, `UdpSocket` non-blocking; return futures or
+  streams
++ `tokio_core::io` helper methods. Can be replaced with more specific logic;
+   only work with "future aware"/non-blocking implementations of `Read` and `Write`
++ helpers return futures that yield back ownership. Futures must be 'static;
+  take IO by value
++ `Io::split` takes a `Read + Write` and returns separate `Read` and `Write` for
+  ownership ease
++ `Io::framed` takes `Codec` that takes stream/sink of bytes -> `Stream` and
+  `Sink` impls
++ returns `Framed` which impls `Sink` and `Stream`. Can be split with
+  `Io::split`
++ `Codec` provides `EasyBuf` allows easy buffering through `drain_to`
++ To encode, append bytes to provided `Vec`
++ `UdpSocket` is *not* byte stream. Impls convenience methods
