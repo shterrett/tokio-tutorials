@@ -58,3 +58,15 @@ https://tokio.rs/docs/getting-started/tokio/
 + `Codec` provides `EasyBuf` allows easy buffering through `drain_to`
 + To encode, append bytes to provided `Vec`
 + `UdpSocket` is *not* byte stream. Impls convenience methods
+
+## Pipelined server
+
++ Build server that is generic over a particular service
++ Implemented an echo server and passed into server/handler function
++ Spawn each connection onto the event loop and handle asynchronously
+
+## Http/Tls Client
++ build up a single future that executes the entire request asynchronously using
+  `and_then` to chain the results of futures together.
++ Finally run the future using `core.run`
++ Use existing HTTP library instead of handcrafting the request string
